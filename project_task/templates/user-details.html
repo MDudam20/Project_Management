@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/c80ce35b53.js" crossorigin="anonymous"></script>
+
+      <style>
+        body{
+            background-image: url(/static/image/bg-1.jpg);
+            color: #566787;
+            height: 700px;
+        }
+        .container h2{
+        color: #fff;
+    }
+   
+    tbody  .fa-user-pen{
+        color: green;
+    }
+    tbody .fa-trash-can{
+        color: red;
+    }
+    .fa-circle-plus{
+        color: #0b3a0b;
+    }
+    .fa-arrow-left{
+        color: #030303;
+    }
+    </style>    
+</head>
+<body>
+    
+    <div class="container p-5" id="example">
+        <div class="d-flex">
+            <div class="p-2 w-75"><h2>User_detail</h2></div>
+            <div class="ps-5 flex-shrink-1"><a href="{% url 'user-A' %}" class="btn btn-outline-light px-4"><i class="fa-solid fa-circle-plus "></i> <span>Add New User</span></a> </div>
+        </div>
+        <table class="table table-hover text-white">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>User Full_name</th>
+                    <th>User Email</th>
+                    <th>User Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in UD %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.Full_name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.Number}}</td>
+              
+                    <td >
+                        <!-- <a href="{% url 'user-E' i.id %}" class="edit pe-3 btn-outline-success"><i class="fa-solid fa-user-pen"></i></a> -->
+
+                        <a href="{% url 'delete_client' i.id %}" class="delete btn-outline-danger"  onclick="return confirm('Are you really want to delete?')"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="d-flex flex-row-reverse">
+            <a href="{% url 'home' %}" class="btn btn-outline-light px-4"><i class="fa-solid fa-arrow-left pe-3"></i><span>Back</span></a>  
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Management</title>
+    <!-- css link -->
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css'%}" /> -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/c80ce35b53.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- datatable -->
+    <!-- css link -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="#">Project Management</a>
+                </div>
+                <!-- Sidebar Navigation -->
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages"
+                            aria-expanded="false" aria-controls="pages">
+                            <i class="fa-solid fa-user-group pe-2"></i>
+                            Client
+                        </a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{% url 'client-A' %}" class="sidebar-link">Add Client</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'client-D' %}" class="sidebar-link">Client Details</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard"
+                            aria-expanded="false" aria-controls="dashboard">
+                            <i class="fa-solid fa-users pe-2"></i>
+                            User
+                        </a>
+                        <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{% url 'user-A' %}" class="sidebar-link">Add User</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'user_D' %}" class="sidebar-link">User Details</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth"
+                            aria-expanded="false" aria-controls="auth">
+                            <i class="fa-regular fa-file-lines pe-2"></i>
+                            Project
+                        </a>
+                        <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="{% url 'project-t'%}" class="sidebar-link">Project Add</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{% url 'project-D' %}" class="sidebar-link">Project Details</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </aside>
+        <!-- Main Component -->
+        <div class="main">
+            <nav class="navbar navbar-expand px-3 border-bottom d-flex justify-content-between">
+                <!-- Button for sidebar toggle -->
+                <button class="btn" type="button" data-bs-theme="dark">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a href="{% url 'logout' %}" class="btn btn-outline-light">Logout</a> 
+                <!-- <button class="btn main-btn"><a href="{% url 'logout' %}">Logout</a></button> -->
+            </nav>
+            <main class="content px-3 py-2">
+
+                <h2 class="text-center m-5">Project-Client-User Management</h2>
+                <div class="container-fluid ">
+                    
+                    <div class="row ">
+                        <div class="col-md-4  m-3 client">
+                            <!-- {{dc}} -->
+                            <img src="/static/image/client.png" alt="" >
+                            <h4 class="pt-3"><a href="{% url 'client-D' %}" >Client Details</a></h4>
+                        </div>
+                        <div class="col-md-4 border m-3 client">
+                            <img src="/static/image/woman.png" alt="">
+                            <h4 class="pt-3"><a href="{% url 'user_D' %}" >User Details</a></h4>
+                        </div>
+                        <div class="col-md-4 border m-3 client">
+                            <img src="/static/image/inventory.png" alt="">
+                            <h4 class="pt-3"><a href="{% url 'project-D' %}" >Project Details</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+   
+    <script>
+        const toggler = document.querySelector(".btn");
+        toggler.addEventListener("click",function(){
+       document.querySelector("#sidebar").classList.toggle("collapsed");
+});
+    </script>
+    
+
+    <!-- <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a> -->
+  </body>
+</html>
